@@ -95,9 +95,9 @@ class UserHandler{
 
                 }
 
-                $following = UserRelation::select()->where('user_to', $id)->get();
+                $following = UserRelation::select()->where('user_from', $id)->get();
                 foreach ($following as $follower){
-                    $userData = User::select()->where('id', $follower['user_from'])->one();
+                    $userData = User::select()->where('id', $follower['user_to'])->one();
                     $newUser = new User();
                     $newUser->id = $userData['id'];
                     $newUser->name = $userData['name'];
@@ -147,6 +147,22 @@ class UserHandler{
         }
         
         return false;        
+    }
+
+    public static function follow($from, $to){
+        UserRelation::insert([
+            'user_from' => $from,
+            'user_to' => $to
+        ])->execute();
+
+    }
+
+    public static function unfollow($from, $to){
+        UserRelation::delete()
+        ->where('user_from', $from)
+        ->where('user_to', $to)
+        ->execute();
+
     }
 
 }
