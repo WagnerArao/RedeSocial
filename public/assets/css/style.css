@@ -222,7 +222,7 @@ header .head-side {
 .feed-new-input-placeholder {
     flex:1;
     font-size:14px;
-    color:#333;
+    color:rgba(51, 51, 51, 0.63);
 }
 .feed-new-input {
     flex:1;
