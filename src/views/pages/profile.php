@@ -78,7 +78,7 @@
                                 <span>(<?=count($user->following);?>)</span>
                             </div>
                             <div class="box-header-buttons">
-                                <a href="">ver todos</a>
+                                <a href="<?=$base;?>/perfil/<?=$user->id;?>/amigos">ver todos</a>
                             </div>
                         </div>
                         <div class="box-body friend-list">
@@ -86,7 +86,7 @@
                             <?php for($q=0;$q<9;$q++): ?>
                                 <?php if (isset($user->following[$q])): ?>
                                     <div class="friend-icon">
-                                    <a href="<?=$base;?>/perfil/{id}">
+                                    <a href="<?=$base;?>/perfil/<?=$user->following[$q]->id;?>">
                                         <div class="friend-icon-avatar">
                                             <img src="<?=$base;?>/media/avatars/<?=$user->following[$q]->avatar;?>" />
                                         </div>
@@ -111,7 +111,7 @@
                                 <span>(<?=count($user->photos);?>)</span>
                             </div>
                             <div class="box-header-buttons">
-                                <a href="">ver todos</a>
+                                <a href="<?=$base;?>/perfil/<?=$user->id;?>/fotos">ver todos</a>
                             </div>
                         </div>
                         <div class="box-body row m-20">
@@ -123,7 +123,7 @@
                                     <img src="<?=$base;?>/media/uploads/<?=$user->photos[$q]->body?>" />
                                 </a>
                                 <div id="modal-<?=$user->photos[$q]->id;?>" style="display:none">
-                                    <img src="<?=$base;?>/media/<?=$user->photos[$q]->body?>" />
+                                    <img src="<?=$base;?>/media/<?=$user->photos[$q]->body;?>" />
                                 </div>
                                 </div>
                                 <?php endif; ?>
